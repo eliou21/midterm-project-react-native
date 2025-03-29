@@ -124,7 +124,9 @@ export default function ApplicationForm({ route, navigation }: Props) {
             <View style={[styles.formContainer, isDarkMode && styles.formContainerDark]}>
               {/* Job Info */}
               <View style={styles.jobInfoContainer}>
-                <Text style={[styles.job, isDarkMode && styles.jobDark]}>{job.title}</Text>
+                <Text style={[styles.job, isDarkMode && styles.jobDark]}>
+                  {job.title}
+                </Text>
                 <Text
                   style={[styles.companyName, isDarkMode && styles.companyNameDark]}
                 >
@@ -134,60 +136,68 @@ export default function ApplicationForm({ route, navigation }: Props) {
 
               <View style={[styles.infoSeparator, isDarkMode && styles.infoSeparatorDark]} />
 
-                {/* Full Name Input */}
-                <View style={styles.inputContainer}>
-                  <Text style={[styles.label, isDarkMode && styles.labelDark]}>Full Name</Text>
-                  <TextInput
-                    style={[styles.input, isDarkMode && styles.inputDark]}
-                    placeholder="Enter your full name"
-                    value={name}
-                    onChangeText={setName}
-                    placeholderTextColor={isDarkMode ? "#aaa" : "#555"}
-                  />
-                  {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
-                </View>
+              {/* Full Name Input */}
+              <View style={styles.inputContainer}>
+                <Text style={[styles.label, isDarkMode && styles.labelDark]}>
+                  Full Name <Text style={styles.required}>*</Text>
+                </Text>
+                <TextInput
+                  style={[styles.input, isDarkMode && styles.inputDark]}
+                  placeholder="Enter your full name"
+                  value={name}
+                  onChangeText={setName}
+                  placeholderTextColor={isDarkMode ? "#aaa" : "#555"}
+                />
+                {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
+              </View>
 
-                {/* Email Address Input */}
-                <View style={styles.inputContainer}>
-                  <Text style={[styles.label, isDarkMode && styles.labelDark]}>Email Address</Text>
-                  <TextInput
-                    style={[styles.input, isDarkMode && styles.inputDark]}
-                    placeholder="Enter your email address"
-                    value={email}
-                    onChangeText={setEmail}
-                    keyboardType="email-address"
-                    placeholderTextColor={isDarkMode ? "#aaa" : "#555"}
-                  />
-                  {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
-                </View>
+              {/* Email Address Input */}
+              <View style={styles.inputContainer}>
+                <Text style={[styles.label, isDarkMode && styles.labelDark]}>
+                  Email Address <Text style={styles.required}>*</Text>
+                </Text>
+                <TextInput
+                  style={[styles.input, isDarkMode && styles.inputDark]}
+                  placeholder="Enter your email address"
+                  value={email}
+                  onChangeText={setEmail}
+                  keyboardType="email-address"
+                  placeholderTextColor={isDarkMode ? "#aaa" : "#555"}
+                />
+                {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
+              </View>
 
-                {/* Contact Number Input */}
-                <View style={styles.inputContainer}>
-                  <Text style={[styles.label, isDarkMode && styles.labelDark]}>Contact Number</Text>
-                  <TextInput
-                    style={[styles.input, isDarkMode && styles.inputDark]}
-                    placeholder="Enter your contact number"
-                    value={contact}
-                    onChangeText={setContact}
-                    keyboardType="phone-pad"
-                    placeholderTextColor={isDarkMode ? "#aaa" : "#555"}
-                  />
-                  {contactError ? <Text style={styles.errorText}>{contactError}</Text> : null}
-                </View>
+              {/* Contact Number Input */}
+              <View style={styles.inputContainer}>
+                <Text style={[styles.label, isDarkMode && styles.labelDark]}>
+                  Contact Number <Text style={styles.required}>*</Text>
+                </Text>
+                <TextInput
+                  style={[styles.input, isDarkMode && styles.inputDark]}
+                  placeholder="Enter your contact number"
+                  value={contact}
+                  onChangeText={setContact}
+                  keyboardType="phone-pad"
+                  placeholderTextColor={isDarkMode ? "#aaa" : "#555"}
+                />
+                {contactError ? <Text style={styles.errorText}>{contactError}</Text> : null}
+              </View>
 
-                {/* Hiring Reason Input */}
-                <View style={styles.inputContainer}>
-                  <Text style={[styles.label, isDarkMode && styles.labelDark]}>Why Should We Hire You?</Text>
-                  <TextInput
-                    style={[styles.input, isDarkMode && styles.inputDark, styles.tallerInput]}
-                    placeholder="Enter your reason"
-                    value={hiringReason}
-                    onChangeText={setHiringReason}
-                    multiline
-                    placeholderTextColor={isDarkMode ? "#aaa" : "#555"}
-                  />
-                  {hiringReasonError ? <Text style={styles.errorText}>{hiringReasonError}</Text> : null}
-                </View>
+              {/* Hiring Reason Input */}
+              <View style={styles.inputContainer}>
+                <Text style={[styles.label, isDarkMode && styles.labelDark]}>
+                  Why Should We Hire You? <Text style={styles.required}>*</Text>
+                </Text>
+                <TextInput
+                  style={[styles.input, isDarkMode && styles.inputDark, styles.tallerInput]}
+                  placeholder="Enter your reason"
+                  value={hiringReason}
+                  onChangeText={setHiringReason}
+                  multiline
+                  placeholderTextColor={isDarkMode ? "#aaa" : "#555"}
+                />
+                {hiringReasonError ? <Text style={styles.errorText}>{hiringReasonError}</Text> : null}
+              </View>
 
               {/* Submit Button */}
               <TouchableOpacity
@@ -269,6 +279,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
+  required: {
+    color: "red",
+  },
+
   jobInfoContainer: {
     alignItems: "center",
     marginBottom: 20,
@@ -278,6 +292,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: "#8E0B13",
     fontWeight: "bold",
+    textAlign: "center",
     marginTop: 15,
     marginBottom: 15,
   },
@@ -359,6 +374,8 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 14,
     color: "red",
+    marginTop: 7,
+    marginLeft: 6
   },
 
   applyButton: {
