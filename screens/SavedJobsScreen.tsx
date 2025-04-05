@@ -25,13 +25,12 @@ export default function SavedJobsScreen() {
   const [searchText, setSearchText] = useState("");
   const [sortBy, setSortBy] = useState<"Company Name" | "Job Title" | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const [loading, setLoading] = useState(true); // Add loading state for job fetch
+  const [loading, setLoading] = useState(true); 
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
-  // Set loading to false after initial fetch
+  
   useEffect(() => {
     if (savedJobs.length > 0) {
-      setLoading(false); // Simulate loading completion after jobs are fetched or loaded
+      setLoading(false); 
     }
   }, [savedJobs]);
 
